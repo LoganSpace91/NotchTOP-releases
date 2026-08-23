@@ -10,15 +10,20 @@
 # "Apple could not verify…" al primo avvio, anche senza notarizzazione.
 #
 # Note:
-# - `version :latest` + `sha256 :no_check`: l'app è a rilascio continuo e si
-#   auto-aggiorna via Sparkle, quindi non manteniamo un hash per ogni versione.
+# - Versione e sha256 li riscrive scripts/release.sh a ogni release, e da lì
+#   li pubblica anche nella repo dell'archivio (che è la tap). Non modificarli
+#   a mano: l'hash deve essere quello del dmg davvero pubblicato.
+# - L'url punta all'asset VERSIONATO della release, non al dmg "latest" del
+#   sito: quello cambia sotto i piedi a ogni versione e farebbe fallire il
+#   controllo dell'hash a tutti.
 # - `auto_updates true`: dice a Homebrew che è Sparkle a gestire gli update
 #   (brew non prova a "rimpiazzarla" a ogni upgrade).
 cask "notchtop" do
-  version :latest
-  sha256 :no_check
+  version "1.6.0"
+  sha256 "b10d1dc45ffabfd2f9a9da097e4eb875b0822a8ba30da917c3d2615da6e9f051"
 
-  url "https://notchontop.vercel.app/downloads/NotchTOP.dmg"
+  url "https://github.com/LoganSpace91/NotchTOP-releases/releases/download/v#{version}/NotchTOP-#{version}.dmg",
+      verified: "github.com/LoganSpace91/NotchTOP-releases/"
   name "NotchTOP"
   desc "Trasforma il notch del MacBook in un pannello interattivo"
   homepage "https://notchontop.vercel.app/"
