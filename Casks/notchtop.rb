@@ -19,8 +19,8 @@
 # - `auto_updates true`: dice a Homebrew che è Sparkle a gestire gli update
 #   (brew non prova a "rimpiazzarla" a ogni upgrade).
 cask "notchtop" do
-  version "1.13.1"
-  sha256 "d18dd619733d438cea39c924b46adb1de09e2e1c9f1f73b7f36b5642c2c185f6"
+  version "1.13.2"
+  sha256 "aa6fa2827512a269af5b5b5f0edb00e73372f2774090160964bf671a1a8ffe65"
 
   url "https://github.com/LoganSpace91/NotchTOP-releases/releases/download/v#{version}/NotchTOP-#{version}.dmg",
       verified: "github.com/LoganSpace91/NotchTOP-releases/"
